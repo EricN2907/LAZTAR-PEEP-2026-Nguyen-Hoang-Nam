@@ -1,0 +1,58 @@
+baseURL = "https://HuyMinhDev.github.io/LAZTAR-PEEP2026-Trainee-Notes/"
+relativeURLs = true
+canonifyURLs = true
+publishDir = "public"
+
+theme = "hugo-theme-learn"
+
+[outputs]
+home = [ "HTML", "RSS", "JSON" ]
+
+[params]
+  themeVariant = "laztar"
+  editURL = ""
+  description = "Notes for the first Product Engineering Experience Program phase at Công ty trách nhiệm hữu hạn LAZTAR - Phần Mềm & Giải Pháp Số (Software & Digital)."
+  author = "HuyMinhDev"
+  showVisitedLinks = true
+  disableBreadcrumb = false
+  disableNextPrev = false
+
+[Languages]
+[Languages.en]
+title = "Laztar Trainee Notes"
+weight = 1
+languageName = "English"
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fas fa-globe'></i> LAZTAR Website"
+identifier = "laztar-website"
+url = "https://laztar.com/"
+weight = 10
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fab fa-facebook'></i> LAZTAR Facebook"
+identifier = "laztar-facebook"
+url = "https://www.facebook.com/laztar.tech"
+weight = 20
+
+[Languages.vi]
+title = "Ghi chú thực tập LAZTAR"
+weight = 2
+languageName = "Tiếng Việt"
+
+[[Languages.vi.menu.shortcuts]]
+name = "<i class='fas fa-globe'></i> Website LAZTAR"
+identifier = "laztar-website"
+url = "https://laztar.com/"
+weight = 10
+
+[[Languages.vi.menu.shortcuts]]
+name = "<i class='fab fa-facebook'></i> Facebook LAZTAR"
+identifier = "laztar-facebook"
+url = "https://www.facebook.com/laztar.tech"
+weight = 20
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

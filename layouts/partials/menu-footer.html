@@ -1,0 +1,26 @@
+{{ $peepPages := len (where .Site.RegularPages "Section" "peep") }}
+{{ $weekPages := len (where .Site.RegularPages "Section" "in" (slice "week-01" "week-02" "week-03" "week-04")) }}
+<div class="footer-block">
+    <b>PEEP 2026</b><br>
+    <span class="footer-counter">{{ printf "%09d" $peepPages }}</span>
+</div>
+
+<div class="footer-block">
+    <b>Trainee Notes</b><br>
+    <span class="footer-counter">{{ printf "%09d" $weekPages }}</span>
+</div>
+
+<div class="footer-block">
+    <b>Last Updated</b><br>
+    <i><span id="lastUpdated" class="footer-date"></span></i>
+
+    <script>
+        const today = new Date();
+        document.getElementById('lastUpdated').textContent = today.toLocaleDateString('en-GB');
+    </script>
+</div>
+
+<div class="footer-block">
+    <b>Team</b><br>
+    <i><a href="https://www.facebook.com/laztar.tech" class="footer-link">LAZTAR Tech</a></i>
+</div>
