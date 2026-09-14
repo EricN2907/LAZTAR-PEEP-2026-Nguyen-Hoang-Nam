@@ -1,4 +1,4 @@
-baseURL = "https://HuyMinhDev.github.io/LAZTAR-PEEP2026-Trainee-Notes/"
+baseURL = "https://HuyMinhDev.github.io/LAZTAR-PEEP/"
 relativeURLs = true
 canonifyURLs = true
 publishDir = "public"
