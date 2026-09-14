@@ -8,10 +8,10 @@ Technical notes, learning summaries, and progress documentation from my trainee 
 
 ## Tech Stack
 
-* Hugo
-* hugo-theme-learn
-* GitHub Pages
-* GitHub Actions
+- Hugo
+- hugo-theme-learn
+- GitHub Pages
+- GitHub Actions
 
 ## Local Development
 
@@ -41,9 +41,9 @@ content/
 └── week-04/
 ```
 
-* `.md` → English content
-* `.vi.md` → Vietnamese content
-* Keep matching filenames for language switching support
+- `.md` → English content
+- `.vi.md` → Vietnamese content
+- Keep matching filenames for language switching support
 
 ## Deployment
 
