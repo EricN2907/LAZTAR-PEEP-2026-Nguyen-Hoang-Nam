@@ -18,7 +18,7 @@ This site records my notes for the first experience phase of the **Product Engin
 PEEP is designed for students who want to grow into software engineers through real product engineering practice, mentoring, technical review, teamwork, and professional communication.
 
 - **Trainee:** Nguyen Hoang Nam
-- **Program:** PEEP 2026 - Software Engineer
+- **Program:** PEEP 2026 - Software Engineer Trainee
 - **Current Phase:** Product Engineering Experience Program
 - **Company:** LAZTAR Software & Digital Solutions Co., Ltd.
 - **Work Mode:** Hybrid, with office participation every week
