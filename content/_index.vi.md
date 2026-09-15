@@ -17,7 +17,7 @@ chapter: false
 
 PEEP dành cho sinh viên muốn theo đuổi nghề kỹ sư phần mềm thông qua môi trường phát triển sản phẩm thực tế, mentoring, review kỹ thuật, làm việc nhóm và giao tiếp chuyên nghiệp.
 
-- **Thành viên:** Nguyen Nhat Kim Ngan
+- **Thành viên:** Nguyen Hoang Nam
 - **Chương trình:** PEEP 2026 - Software Engineer
 - **Giai đoạn hiện tại:** Product Engineering Experience Program
 - **Công ty:** Công ty trách nhiệm hữu hạn LAZTAR - Phần Mềm & Giải Pháp Số
