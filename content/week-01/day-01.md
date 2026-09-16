@@ -284,6 +284,227 @@ git log --oneline -3               # confirm the commit appears on main
 
 ---
 
+#### Resolving Merge Conflicts — GitHub Web and VS Code
+
+These two exercises use **PRM393-SU26-GRP6/BE**, with `dev_1` as the target branch for both pull requests. The policy files in `docs/` are drafts created for this Git exercise.
+
+| Scenario | Feature branch | Conflict | Resolution tool |
+| --- | --- | --- | --- |
+| Update the reservation timeout | `feature/booking-timeout` | One line: 10 or 15 minutes | GitHub web |
+| Update booking policies | `feature/booking-policy-update` | Two content conflicts and one modify/delete conflict | VS Code + Git |
+
+**Workflow:** Check branches → create a PR → identify conflicts → agree on the result → record the resolution → merge the PR.
+
+##### Preparation — Check and Push the Branches
+
+In the `BE` directory, check the working tree and branches before publishing the commits.
+
+```bash
+git status
+git branch
+git push origin dev_1
+git push -u origin feature/booking-timeout
+git push -u origin feature/booking-policy-update
+```
+
+**Figure 32:** The working tree is clean. At the time of this screenshot, local `dev_1` is 15 commits ahead of `origin/dev_1`. This counts unpublished commits, not the number of minutes in the reservation policy.
+
+![Figure 32 – Checking the working tree and local branches in BE](/images/day1/image32.png)
+
+**Figure 33:** Push `dev_1` and both feature branches successfully, setting upstream tracking for the new branches.
+
+![Figure 33 – Pushing the target and feature branches to GitHub](/images/day1/image33.png)
+
+---
+
+##### Part 1 — Resolve a Conflict on GitHub Web
+
+**Scenario:** The same line in `docs/booking-policy.md` changes from the original **5 minutes** to **10 minutes** on the feature branch and **15 minutes** on `dev_1`.
+
+**Step 1 — Compare the File and Select the PR Branches**
+
+Open the file on both branches. For the PR, select **base: `dev_1`** and **compare: `feature/booking-timeout`**.
+
+![Figure 34 – Opening the reservation policy on the feature branch and dev_1](/images/day1/image34.png)
+
+**Figure 35:** GitHub reports **Can't automatically merge**. The diff below shows the feature branch's change from the common base, **5 → 10 minutes**. It does not directly compare the final values of **10 and 15 minutes**.
+
+![Figure 35 – Selecting base and compare; GitHub cannot merge automatically](/images/day1/image35.png)
+
+**Step 2 — Create the Pull Request and Identify the Conflicting File**
+
+Use the title **Update booking reservation timeout**, describe the proposed increase, and select **Create pull request**.
+
+![Figure 36 – Entering the title for the reservation timeout pull request](/images/day1/image36.png)
+
+**Figure 37:** PR **#12** lists `docs/booking-policy.md` as conflicting. **Resolve conflicts** is available because this is a simple content conflict.
+
+![Figure 37 – PR number 12 reports a conflict in booking-policy.md](/images/day1/image37.png)
+
+**Step 3 — Choose the Final Content**
+
+Select **Resolve conflicts** to inspect both versions. The original Vietnamese file content is preserved below to match the screenshots:
+
+```text
+<<<<<<< feature/booking-timeout
+Thời gian giữ chỗ: 10 phút.
+=======
+Thời gian giữ chỗ: 15 phút.
+>>>>>>> dev_1
+```
+
+![Figure 38 – The web editor shows the competing 10-minute and 15-minute values](/images/day1/image38.png)
+
+Agree on **15 minutes**. Accept the incoming change or replace the entire conflicting region with the following line, leaving the rest of the file intact:
+
+```text
+Thời gian giữ chỗ: 15 phút.
+```
+
+Select **Mark as resolved**. Once the file has a green check mark, select **Commit merge**.
+
+![Figure 39 – Keeping 15 minutes and marking the file as resolved](/images/day1/image39.png)
+
+**Step 4 — Verify and Merge the PR**
+
+The PR now shows **No conflicts with base branch**. In this screenshot, **Files changed = 0** because the final content matches `dev_1`; the history still contains the proposal and resolution commits.
+
+![Figure 40 – The PR has no conflicts after committing the resolution on GitHub](/images/day1/image40.png)
+
+{{% notice note %}}
+**Commit merge** in the conflict editor merges the target branch into the feature branch to resolve conflicts. **Merge pull request** is the subsequent step that merges the feature branch into `dev_1`.
+{{% /notice %}}
+
+Select **Merge pull request** and confirm. PR **#12** changes to **Merged**, completing the web exercise.
+
+![Figure 41 – PR number 12 successfully merged into dev_1](/images/day1/image41.png)
+
+---
+
+##### Part 2 — Resolve More Complex Conflicts in VS Code
+
+**Scenario:** `feature/booking-policy-update` proposes changes to three documents, while `dev_1` has changed the policies differently and deleted the old guide.
+
+| File in `docs/` | Feature branch | `dev_1` | Conflict type |
+| --- | --- | --- | --- |
+| `cancellation-policy.md` | Cancel at least 2 hours before the booking | Cancel at least 4 hours before the booking | Competing line changes |
+| `payment-policy.md` | 30% deposit | 50% deposit | Competing line changes |
+| `legacy-booking-flow.md` | Add the booking code to the instructions | Delete the file | Modify/delete |
+
+**Step 1 — Create a PR and Identify the Web Editor's Limitation**
+
+Select **base: `dev_1`**, **compare: `feature/booking-policy-update`**. The comparison lists three files changed on the feature branch.
+
+![Figure 42 – Comparing the booking policy feature branch with dev_1](/images/day1/image42.png)
+
+Create a PR titled **Update booking policies and legacy flow**, describing the proposed 2-hour cancellation window, 30% deposit, and updated phone confirmation instructions.
+
+![Figure 43 – Creating the booking policy update pull request](/images/day1/image43.png)
+
+**Figure 44:** PR **#13** lists three conflicting files. Hovering over the disabled **Resolve conflicts** button shows that these conflicts cannot be resolved in the web editor.
+
+![Figure 44 – GitHub reports conflicts too complex for its web editor](/images/day1/image44.png)
+
+{{% notice info %}}
+The deciding factor here is the **modify/delete conflict**, not simply the number of conflicts. Use Git locally to decide whether to keep or delete the document, as well as resolve the competing line changes.
+{{% /notice %}}
+
+**Step 2 — Merge the Target Branch into the Local Feature Branch**
+
+Check the working tree and switch to the PR's branch:
+
+```bash
+git status
+git switch feature/booking-policy-update
+```
+
+![Figure 45 – Checking the clean working tree and switching to the policy feature branch](/images/day1/image45.png)
+
+Fetch the latest changes, including the merge of PR #12, and merge `origin/dev_1`:
+
+```bash
+git fetch origin
+git merge origin/dev_1
+git status
+```
+
+Git reports `CONFLICT (content)` and `CONFLICT (modify/delete)`, then pauses for resolution. `booking-policy.md` merges automatically; the other three files need a manual decision.
+
+![Figure 46 – The terminal reports content and modify/delete conflicts after merging](/images/day1/image46.png)
+
+**Step 3 — Read Current and Incoming in VS Code**
+
+Open **Source Control → Merge Changes**. For this merge command:
+
+| Editor label | Corresponding branch | Cancellation window | Deposit |
+| --- | --- | --- | --- |
+| Current / HEAD | `feature/booking-policy-update` | 2 hours | 30% |
+| Incoming | `origin/dev_1` | 4 hours | 50% |
+
+![Figure 47 – Cancellation conflict: Current is 2 hours, Incoming is 4 hours](/images/day1/image47.png)
+
+![Figure 48 – Payment conflict: Current is 30%, Incoming is 50%](/images/day1/image48.png)
+
+**Step 4 — Agree on the Content and Mark the Conflicts as Resolved**
+
+For both policy files, select **Accept Incoming Change** to keep **4 hours** and **50%**, then save. For `legacy-booking-flow.md`, there are two possible decisions:
+
+| Decision | Resolution command |
+| --- | --- |
+| Keep the edited document from the feature branch | `git add docs/legacy-booking-flow.md` |
+| Accept the deletion from the target branch | `git rm docs/legacy-booking-flow.md` |
+
+**This exercise kept the old guide.** Inspection of the resulting commit, `bd6a9e1`, confirms that the file still contains the instructions to call the venue owner and provide a booking code. The commands below therefore demonstrate keeping it:
+
+```bash
+git add docs/cancellation-policy.md docs/payment-policy.md
+git add docs/legacy-booking-flow.md
+git status
+```
+
+A modify/delete conflict does not necessarily have conflict markers inside the file. Here, `git add` confirms that the existing version should be kept. Because its content remains unchanged relative to HEAD, the file may not appear under **Staged Changes** after resolution.
+
+**Figure 49:** The cancellation policy now says **4 hours**. Source Control no longer has a **Merge Changes** group, and the content changes are staged.
+
+![Figure 49 – Resolved content and the files listed under Staged Changes](/images/day1/image49.png)
+
+**Step 5 — Review the Diff, Commit, and Push**
+
+```bash
+git diff --cached --check
+git diff --cached
+```
+
+The first command checks for whitespace errors and leftover conflict markers in the diff. The second displays the staged content for review before committing.
+
+![Figure 50 – Reviewing the staged diff before completing the merge](/images/day1/image50.png)
+
+```bash
+git commit -m "docs(booking): resolve policy conflicts and retire legacy flow"
+git push origin feature/booking-policy-update
+git status
+```
+
+**Figure 51:** Commit `bd6a9e1` is created and pushed successfully, and the working tree is clean. The commit command above matches the screenshot. Although its message says `retire legacy flow`, the actual commit keeps `legacy-booking-flow.md`.
+
+![Figure 51 – Creating the merge commit, pushing it, and confirming a clean working tree](/images/day1/image51.png)
+
+**Step 6 — Verify on GitHub and Merge the PR**
+
+Refresh PR **#13**. GitHub shows **No conflicts with base branch**, and **Merge pull request** is available.
+
+![Figure 52 – PR number 13 has no conflicts after pushing the local resolution](/images/day1/image52.png)
+
+Select **Merge pull request** and confirm. The PR changes to **Merged**, completing the VS Code and local Git workflow.
+
+![Figure 53 – PR number 13 successfully merged into dev_1](/images/day1/image53.png)
+
+{{% notice tip %}}
+**Resolving a conflict means deciding the final content:** read both sides, choose or combine changes, decide whether to keep or delete files when needed, and review the result before committing. A conflict-free state means Git has a merge result; that result still needs to be checked.
+{{% /notice %}}
+
+---
+
 ### TypeScript
 
 #### Interface vs Type
