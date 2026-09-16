@@ -282,3 +282,223 @@ git log --oneline -3              # xác nhận commit xuất hiện trên main
 
 ![Hình 31 – git cherry-pick: commit "squash fix A B C" xuất hiện trên nhánh main](/images/day1/image31.png)
 
+---
+
+#### Thực hành xử lý conflict — GitHub web và VS Code
+
+Hai tình huống được thực hành trên repo **PRM393-SU26-GRP6/BE**, với `dev_1` là nhánh nhận Pull Request. Các file chính sách trong `docs/` là bản thảo phục vụ bài thực hành.
+
+| Tình huống | Nhánh tính năng | Conflict | Công cụ xử lý |
+| --- | --- | --- | --- |
+| Cập nhật thời gian giữ chỗ | `feature/booking-timeout` | Một dòng: 10 phút hay 15 phút | GitHub web |
+| Cập nhật chính sách đặt sân | `feature/booking-policy-update` | Hai file sửa cùng dòng và một file sửa/xóa | VS Code + Git |
+
+**Luồng thực hành:** Kiểm tra nhánh → tạo PR → nhận diện conflict → thống nhất nội dung → ghi nhận kết quả → merge PR.
+
+##### Chuẩn bị — Kiểm tra và push các nhánh
+
+Trong thư mục `BE`, kiểm tra working tree và danh sách nhánh trước khi đưa các commit lên GitHub.
+
+```bash
+git status
+git branch
+git push origin dev_1
+git push -u origin feature/booking-timeout
+git push -u origin feature/booking-policy-update
+```
+
+**Hình 32:** Working tree sạch; tại thời điểm chụp, `dev_1` local đang hơn `origin/dev_1` 15 commit. Đây là số commit chưa push, không phải số phút trong chính sách giữ chỗ.
+
+![Hình 32 – Kiểm tra working tree và các nhánh trong repo BE](/images/day1/image32.png)
+
+**Hình 33:** Push `dev_1` và hai nhánh tính năng thành công; thiết lập upstream cho các nhánh mới.
+
+![Hình 33 – Push nhánh đích và hai nhánh tính năng lên GitHub](/images/day1/image33.png)
+
+---
+
+##### Phần 1 — Giải quyết conflict trực tiếp trên GitHub web
+
+**Tình huống:** Cùng dòng trong `docs/booking-policy.md` được sửa từ bản gốc **5 phút** thành **10 phút** trên nhánh tính năng và **15 phút** trên `dev_1`.
+
+**Bước 1 — Đối chiếu file và chọn nhánh cho PR**
+
+Mở file trên hai nhánh để đối chiếu. Khi tạo PR, chọn **base: `dev_1`** và **compare: `feature/booking-timeout`**.
+
+![Hình 34 – Mở chính sách giữ chỗ trên nhánh tính năng và dev_1](/images/day1/image34.png)
+
+**Hình 35:** GitHub báo **Can't automatically merge**. Diff bên dưới thể hiện thay đổi của nhánh tính năng từ bản gốc **5 → 10 phút**; đây không phải phép so sánh trực tiếp hai giá trị cuối **10 và 15 phút**.
+
+![Hình 35 – Chọn base và compare, GitHub phát hiện không thể tự merge](/images/day1/image35.png)
+
+**Bước 2 — Tạo Pull Request và xem file conflict**
+
+Đặt tiêu đề **Update booking reservation timeout** và mô tả đề xuất tăng thời gian giữ chỗ, rồi chọn **Create pull request**.
+
+![Hình 36 – Nhập tiêu đề cho Pull Request cập nhật thời gian giữ chỗ](/images/day1/image36.png)
+
+**Hình 37:** PR **#12** liệt kê `docs/booking-policy.md` cần giải quyết. Nút **Resolve conflicts** khả dụng vì đây là conflict nội dung đơn giản.
+
+![Hình 37 – PR số 12 báo conflict tại booking-policy.md](/images/day1/image37.png)
+
+**Bước 3 — Chọn nội dung cuối cùng**
+
+Nhấn **Resolve conflicts** để xem hai phiên bản:
+
+```text
+<<<<<<< feature/booking-timeout
+Thời gian giữ chỗ: 10 phút.
+=======
+Thời gian giữ chỗ: 15 phút.
+>>>>>>> dev_1
+```
+
+![Hình 38 – Web editor hiển thị hai giá trị 10 phút và 15 phút](/images/day1/image38.png)
+
+Thống nhất giữ **15 phút**, chọn nội dung Incoming hoặc sửa toàn bộ vùng conflict thành dòng dưới đây. Giữ nguyên các dòng ngoài vùng conflict.
+
+```text
+Thời gian giữ chỗ: 15 phút.
+```
+
+Chọn **Mark as resolved**. Khi file có dấu kiểm xanh, nhấn **Commit merge**.
+
+![Hình 39 – Giữ giá trị 15 phút và đánh dấu file đã giải quyết](/images/day1/image39.png)
+
+**Bước 4 — Kiểm tra và merge PR**
+
+PR chuyển sang **No conflicts with base branch**. Trong ảnh, **Files changed = 0** vì nội dung cuối cùng trùng với `dev_1`; lịch sử vẫn có commit đề xuất và commit giải quyết conflict.
+
+![Hình 40 – PR hết conflict sau khi tạo commit giải quyết trên web](/images/day1/image40.png)
+
+{{% notice note %}}
+**Commit merge** trong conflict editor đưa nhánh đích vào nhánh tính năng để giải quyết conflict. **Merge pull request** là bước tiếp theo, đưa nhánh tính năng vào `dev_1`.
+{{% /notice %}}
+
+Chọn **Merge pull request** và xác nhận. PR **#12** chuyển sang **Merged**, hoàn thành phần thực hành trên web.
+
+![Hình 41 – PR số 12 đã merge thành công vào dev_1](/images/day1/image41.png)
+
+---
+
+##### Phần 2 — Giải quyết conflict phức tạp trong VS Code
+
+**Tình huống:** Nhánh `feature/booking-policy-update` đề xuất cập nhật ba tài liệu, trong khi `dev_1` đã sửa chính sách theo hướng khác và xóa hướng dẫn cũ.
+
+| File trong `docs/` | Nhánh tính năng | `dev_1` | Loại conflict |
+| --- | --- | --- | --- |
+| `cancellation-policy.md` | Hủy trước 2 giờ | Hủy trước 4 giờ | Sửa cùng dòng |
+| `payment-policy.md` | Đặt cọc 30% | Đặt cọc 50% | Sửa cùng dòng |
+| `legacy-booking-flow.md` | Bổ sung mã đặt sân | Xóa file | Sửa/xóa file |
+
+**Bước 1 — Tạo PR và nhận diện giới hạn của web editor**
+
+Chọn **base: `dev_1`**, **compare: `feature/booking-policy-update`**. Trang so sánh liệt kê ba file được thay đổi trên nhánh tính năng.
+
+![Hình 42 – So sánh nhánh cập nhật chính sách với dev_1](/images/day1/image42.png)
+
+Tạo PR với tiêu đề **Update booking policies and legacy flow**, mô tả đề xuất hủy trước 2 giờ, đặt cọc 30% và cập nhật hướng dẫn xác nhận qua điện thoại.
+
+![Hình 43 – Tạo Pull Request cập nhật chính sách đặt sân](/images/day1/image43.png)
+
+**Hình 44:** PR **#13** báo ba file conflict. Khi di chuột vào nút **Resolve conflicts** bị vô hiệu hóa, GitHub hiển thị thông báo không thể giải quyết bằng web editor.
+
+![Hình 44 – GitHub thông báo conflict quá phức tạp để xử lý trong web editor](/images/day1/image44.png)
+
+{{% notice info %}}
+Điểm quyết định ở đây là **conflict sửa/xóa file**, không chỉ là số lượng conflict. Cần dùng Git local để quyết định giữ hay xóa tài liệu, đồng thời xử lý các dòng xung đột.
+{{% /notice %}}
+
+**Bước 2 — Merge nhánh đích vào nhánh tính năng ở local**
+
+Kiểm tra trạng thái rồi chuyển sang nhánh của PR:
+
+```bash
+git status
+git switch feature/booking-policy-update
+```
+
+![Hình 45 – Working tree sạch trước khi chuyển sang nhánh cập nhật chính sách](/images/day1/image45.png)
+
+Lấy thay đổi mới nhất, bao gồm PR #12 vừa merge, rồi merge `origin/dev_1`:
+
+```bash
+git fetch origin
+git merge origin/dev_1
+git status
+```
+
+Git báo `CONFLICT (content)` và `CONFLICT (modify/delete)`, sau đó dừng để chờ xử lý. File `booking-policy.md` được hợp nhất tự động; ba file còn lại cần quyết định thủ công.
+
+![Hình 46 – Terminal báo conflict nội dung và conflict sửa/xóa sau lệnh merge](/images/day1/image46.png)
+
+**Bước 3 — Đọc Current và Incoming trong VS Code**
+
+Mở **Source Control → Merge Changes**. Với lệnh merge vừa chạy:
+
+| Nhãn trong editor | Nhánh tương ứng | Chính sách hủy | Đặt cọc |
+| --- | --- | --- | --- |
+| Current / HEAD | `feature/booking-policy-update` | 2 giờ | 30% |
+| Incoming | `origin/dev_1` | 4 giờ | 50% |
+
+![Hình 47 – Conflict chính sách hủy: Current 2 giờ, Incoming 4 giờ](/images/day1/image47.png)
+
+![Hình 48 – Conflict thanh toán: Current 30%, Incoming 50%](/images/day1/image48.png)
+
+**Bước 4 — Thống nhất nội dung và đánh dấu đã giải quyết**
+
+Ở hai file chính sách, chọn **Accept Incoming Change** để giữ **4 giờ** và **50%**, rồi lưu file. Với `legacy-booking-flow.md`, có hai cách quyết định:
+
+| Quyết định | Lệnh đánh dấu giải quyết |
+| --- | --- |
+| Giữ bản tài liệu đã sửa trên nhánh tính năng | `git add docs/legacy-booking-flow.md` |
+| Đồng ý xóa tài liệu theo nhánh đích | `git rm docs/legacy-booking-flow.md` |
+
+**Trong lần thực hành này, bản tài liệu cũ đã được giữ lại.** Đối chiếu commit kết quả `bd6a9e1`, file vẫn chứa hướng dẫn gọi điện và cung cấp mã đặt sân. Vì vậy, các lệnh dưới đây minh họa lựa chọn giữ file:
+
+```bash
+git add docs/cancellation-policy.md docs/payment-policy.md
+git add docs/legacy-booking-flow.md
+git status
+```
+
+Conflict sửa/xóa không nhất thiết có dấu phân cách trong file. `git add` ở đây xác nhận giữ bản hiện có. Vì nội dung file được giữ nguyên so với HEAD, file có thể không xuất hiện trong danh sách **Staged Changes** sau khi đã giải quyết.
+
+**Hình 49:** Chính sách hủy đã là **4 giờ**; Source Control không còn nhóm **Merge Changes**, các thay đổi nội dung đã được stage.
+
+![Hình 49 – Nội dung sau khi giải quyết và các file trong Staged Changes](/images/day1/image49.png)
+
+**Bước 5 — Kiểm tra diff, commit và push**
+
+```bash
+git diff --cached --check
+git diff --cached
+```
+
+Lệnh đầu kiểm tra lỗi whitespace và dấu conflict còn sót trong diff; lệnh sau giúp đọc lại nội dung đã stage trước khi commit.
+
+![Hình 50 – Kiểm tra diff đã stage trước khi hoàn tất merge](/images/day1/image50.png)
+
+```bash
+git commit -m "docs(booking): resolve policy conflicts and retire legacy flow"
+git push origin feature/booking-policy-update
+git status
+```
+
+**Hình 51:** Commit `bd6a9e1` được tạo và push thành công; working tree sạch. Lệnh commit trên được giữ đúng theo ảnh thực hành. Tuy tên commit có cụm `retire legacy flow`, nội dung commit thực tế vẫn giữ `legacy-booking-flow.md`.
+
+![Hình 51 – Tạo merge commit, push lên GitHub và kiểm tra working tree sạch](/images/day1/image51.png)
+
+**Bước 6 — Xác nhận trên GitHub và merge PR**
+
+Tải lại PR **#13**: GitHub hiển thị **No conflicts with base branch** và nút **Merge pull request** khả dụng.
+
+![Hình 52 – PR số 13 không còn conflict sau khi push kết quả từ local](/images/day1/image52.png)
+
+Chọn **Merge pull request** và xác nhận. PR chuyển sang **Merged**, hoàn thành quy trình xử lý bằng VS Code và Git local.
+
+![Hình 53 – PR số 13 đã merge thành công vào dev_1](/images/day1/image53.png)
+
+{{% notice tip %}}
+**Giải quyết conflict là quyết định nội dung cuối cùng:** đọc cả hai phía, chọn hoặc kết hợp thay đổi, xác nhận giữ/xóa file khi cần, rồi kiểm tra kết quả trước khi commit. Trạng thái hết conflict chỉ cho biết Git đã có kết quả hợp nhất; vẫn cần đọc lại nội dung đó.
+{{% /notice %}}
