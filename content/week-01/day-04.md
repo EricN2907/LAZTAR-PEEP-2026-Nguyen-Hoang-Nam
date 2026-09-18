@@ -1,40 +1,24 @@
 +++
-title = "Day 04 - 19/06/2026"
+title = "Day 04 - Sep 18, 2026"
 weight = 4
 +++
 
-## Work completed
+## Day 4 Report: Building the Personal Portfolio
 
-### 1. Added and updated diagrams for the PEEP2026 project_2
+### 1. Project Initialization & Structure
+*(Details on creating the new project directory or integrating it, installing dependencies...)*
 
-- Use Case Diagram: Added the "View Internal Statistics" use case for the Admin actor
+### 2. UI/UX Implementation
+Based on the wireframes and ideas from Day 3, the following sections were coded:
+- **Hero Section:** Introduction, greeting, and personal photo.
+- **Skills:** Displaying current tech stack and proficiencies.
+- **Projects:** Showcasing completed projects (including the Task 1 Landing Page).
+- **Contact & PEEP Link:** Providing contact info and progress report links.
 
-- Class Diagram: drew class diagrams for
-  - Web Admin
-  - Mobile Application
+### 3. Animations & Optimization
+- Applied Framer Motion/TailwindCSS for smooth transitions.
+- Ensured full responsiveness across all devices (Desktop, Tablet, Mobile).
 
-- Drew State Machine Diagrams for:
-  - OrderStatus
-  - PaymentStatus
-
-### 2. Learned about the SKILLS integrated into the project
-
-#### Goal
-
-Understand what workflows this repo has standardized, where they are located, and when to use them.
-
-#### What I found
-
-This project has 2 folders that contain skills: `.agents/skills` and `.claude/skills`. Both contain the same main group of skills, so it can be understood that the project is maintaining a guidance set for different agents/contexts.
-
-These skills were grouped by task type:
-
-1. `add-backend-endpoint`: used when adding or extending backend APIs based on the repo's NextJS standard. It includes module, controller, service, DTO, constants, auth, and test.
-2. `add-env-var`: used when adding environment variables for the backend, making sure there is validation when the app boots and updating `.env.example`
-3. `add-mobile-screen`: used when adding a screen on mobile or adding an API call in Expo, following the existing conventions for navigation, theme, i18n, and TanStack Query
-4. `prisma-migration`: used when changing the Prisma schema or changing the database. This skill emphasizes creating incremental migrations and not editing old migrations that have already been committed
-5. `production-readiness`: used to review the checklist before deployment such as real env values, migrations, push notifications, security, CI, and the verify gate
-6. `troubleshoot`: used when encountering environment issues, command errors, commit hook errors, TypeScript errors, Auth/IAP issues, or FCM issues
-7. `write-tests`: used when tests need to be added for backend or mobile
-
-**Summary**: this skill set covers the important groups of work quite fully, from backend, mobile, database migration, env config, testing, troubleshooting, and readiness before production.
+### 4. Deployment
+- Pushed Portfolio source code to GitHub.
+- Successfully deployed the second project to Vercel for Mentor review.

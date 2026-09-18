@@ -1,75 +1,55 @@
 +++
-title = "Ngày 03 - 17/06/2026"
+title = "Ngày 03 - 17/09/2026"
 weight = 3
 +++
 
-## Việc đã làm
+## Báo Cáo Công Việc Ngày 3
 
-### 1. Thống nhất ý tưởng dự án Custom T-Shirt Store
+### Phần 1: Thiết lập & Xây dựng Landing Page (Task 1)
 
-#### Mục tiêu dự án
+**1. Khởi tạo dự án Next.js**
+Dự án được khởi tạo thành công bằng `pnpm` với các cấu hình tối ưu nhất của Next.js App Router.
+- **Tên dự án:** `my-landing-page` (Chủ đề: VibeMatch - Tìm kiếm đồng điệu âm nhạc EDM/Lo-fi/Indie)
+- **Công nghệ cốt lõi:** Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4.
 
-Xây dựng hệ thống đặt áo thun theo yêu cầu nhằm thực hành các nghiệp vụ thương mại điện tử cơ bản như quản lý sản phẩm, tải lên hình ảnh, xử lý đơn hàng và quản trị đơn hàng.
+**2. Cấu trúc thư mục & Phân chia Component**
+Hệ thống được module hóa rõ ràng để dễ dàng mở rộng:
+- `src/app/layout.tsx`: Layout tổng, bọc `Navbar` và `Footer`.
+- `src/app/page.tsx`, `features/page.tsx`, `players/page.tsx`: Các trang chính.
+- `src/data/mockData.ts`: Lưu trữ dữ liệu giả lập.
 
-> [Link drive tổng hợp tài liệu dự án](https://drive.google.com/drive/folders/1gnnD7WcaAnyGG03nwvuGteWGj5RKcDg3?usp=sharing)
+**3. Xây dựng Giao diện (UI) & Client-side Routing**
+- Giao diện Dark Mode kết hợp Neon Glow cực kỳ hiện đại.
+- Tích hợp **Lucide React** (icon) và **Framer Motion** (hiệu ứng mượt mà).
+- Sử dụng `<Link>` để điều hướng trang tức thì không chớp màn hình (SPA).
 
-#### Chức năng khách hàng
+**4. Triển khai (Deployment)**
+- Push code hoàn tất lên GitHub repository cá nhân.
+- Deploy thành công lên hệ thống máy chủ của **Vercel**.
 
-##### Quản lý tài khoản
-- Đăng ký tài khoản
-- Đăng nhập / Đăng xuất
-- Cập nhật thông tin cá nhân
+---
 
-##### Danh mục sản phẩm
-- Xem danh sách các mẫu áo có sẵn
-- Xem thông tin chi tiết sản phẩm:
-  - Tên sản phẩm
-  - Hình ảnh
-  - Giá bán
-  - Mô tả
+### Phần 2: Lên ý tưởng & Kế hoạch cho Project Portfolio Cá nhân (Task 2)
 
-##### Tùy chỉnh sản phẩm
-- Chọn màu sắc
-- Chọn kích thước (S, M, L, XL)
-- Tải lên hình ảnh để in lên áo
+Để chuẩn bị cho việc code trang Portfolio giới thiệu bản thân vào Ngày 4, những bước chuẩn bị sau đã được thực hiện:
 
-##### Quản lý đơn hàng
-- Nhập thông tin nhận hàng:
-  - Họ tên người nhận
-  - Số điện thoại
-  - Địa chỉ giao hàng
-  - Ghi chú (không bắt buộc)
-- Tạo đơn hàng
-- Xem lịch sử đơn hàng
-- Theo dõi trạng thái đơn hàng:
-  - Pending
-  - Confirmed
-  - Shipping
-  - Completed
-  - Cancelled
+**1. Liệt kê các mục nội dung cần có trên trang cá nhân**
+- Giới thiệu bản thân (Hero section).
+- Kỹ năng (Skills & Tech Stack).
+- Dự án đã làm (Projects/Portfolio).
+- Liên hệ (Contact form/Links).
+- Link báo cáo PEEP.
 
-#### Chức năng quản trị viên
+**2. Tham khảo 2-3 trang cá nhân/portfolio mẫu**
+- Tham khảo các mẫu do mentor gợi ý để lấy cảm hứng về bố cục và phong cách thiết kế chuyên nghiệp.
 
-##### Quản lý sản phẩm
-- Tạo sản phẩm
-- Chỉnh sửa sản phẩm
-- Xóa sản phẩm
+**3. Phác thảo Wireframe**
+- Lên bản vẽ phác thảo đơn giản (trên giấy, Figma hoặc Excalidraw) để xác định vị trí các khối nội dung, hình ảnh và nút CTA trên trang.
 
-##### Quản lý đơn hàng
-- Xem danh sách đơn hàng
-- Xem hình ảnh khách hàng đã tải lên
-- Cập nhật trạng thái đơn hàng
+**4. Chọn phong cách thiết kế**
+- Lựa chọn bảng màu và font chữ chủ đạo phù hợp với phong cách cá nhân và định hướng của LAZTAR.
 
-#### Thanh toán
-- Thanh toán khi nhận hàng (COD) hoặc sử dụng API thanh toán mô phỏng
-- Không tích hợp cổng thanh toán thực tế
+**5. Xác định công nghệ sử dụng**
+- Quyết định sử dụng bộ khung hiện tại: Framework **Next.js** kết hợp với **Tailwind CSS** (đã trao đổi và thống nhất với mentor vì phù hợp với năng lực hiện tại).
 
-### 2. Vẽ các diagram cơ sở
-
-- Use Case Diagram
-- Activity Diagram:
-  - Luồng đặt hàng
-  - Luồng theo dõi đơn hàng
-- Sequence Diagram: Luồng đặt hàng
-
-> [Link diagram](https://drive.google.com/file/d/1o_GBOS3tu2yS1wSgaQdFyCRMW6Mw7B0P/view?usp=sharing)
+> **🎯 Kết quả cần đạt trong Ngày 3:** Ý tưởng và nội dung trang cá nhân đã rõ ràng, hoàn toàn sẵn sàng để bắt tay vào code.

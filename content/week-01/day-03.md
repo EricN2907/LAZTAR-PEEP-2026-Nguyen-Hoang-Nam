@@ -1,88 +1,53 @@
 +++
-title = "Day 03 - 17/06/2026"
+title = "Day 03 - Sep 17, 2026"
 weight = 3
 +++
 
-## Completed Tasks
+## Day 3 Report
 
-### 1. Finalized the Custom T-Shirt Store Project Idea
+### Part 1: Landing Page Setup & Implementation (Task 1)
 
-#### Project Objective
+**1. Next.js Project Initialization**
+- **Project Name:** `my-landing-page` (Theme: VibeMatch)
+- **Tech Stack:** Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4.
 
-Develop a custom T-shirt ordering system to practice fundamental e-commerce workflows, including product management, image uploads, order processing, and order administration.
+**2. Folder Structure & Components**
+- Organized `layout.tsx`, `page.tsx`, and separated components (`Navbar`, `Footer`).
+- Centralized mock data in `src/data/mockData.ts`.
 
-> [Project Documentation Drive](https://drive.google.com/drive/folders/1gnnD7WcaAnyGG03nwvuGteWGj5RKcDg3?usp=sharing)
+**3. UI & Routing**
+- Modern Cyberpunk Dark Mode aesthetic.
+- Integrated **Lucide React** (icons) and **Framer Motion** (animations).
+- Used Next.js `<Link>` for seamless Client-side Routing.
 
-#### Customer Features
+**4. Deployment**
+- Pushed source code to personal GitHub repository.
+- Successfully deployed to **Vercel**.
 
-##### Account Management
+---
 
-* Sign up
-* Sign in / Sign out
-* Update profile information
+### Part 2: Planning & Ideation for Personal Portfolio (Task 2)
 
-##### Product Catalog
+Preparation steps taken before diving into the code for the Personal Portfolio (CV) project:
 
-* Browse available T-shirt templates
-* View product details:
+**1. Content Listing**
+Defined the necessary sections for the personal page:
+- About Me (Hero section)
+- Skills (Tech stack & soft skills)
+- Projects (Portfolio showcase)
+- Contact Information
+- PEEP Report Link
 
-  * Product name
-  * Product image
-  * Price
-  * Description
+**2. Inspiration & Reference**
+- Researched 2-3 portfolio templates/examples (including mentor suggestions) to gather inspiration on layout and styling.
 
-##### Product Customization
+**3. Wireframing**
+- Created simple wireframes (via Figma, Excalidraw, or paper) to outline content blocks and component placement.
 
-* Select color
-* Select size (S, M, L, XL)
-* Upload an image to be printed on the T-shirt
+**4. Design System**
+- Selected a core color palette and typography that aligns with personal branding and LAZTAR guidelines.
 
-##### Order Management
+**5. Tech Stack Selection**
+- Finalized the use of **Next.js** and **Tailwind CSS** (discussed and approved by the mentor based on current capabilities).
 
-* Enter shipping information:
-
-  * Recipient name
-  * Phone number
-  * Delivery address
-  * Note (optional)
-* Place an order
-* View order history
-* Track order status:
-
-  * Pending
-  * Confirmed
-  * Shipping
-  * Completed
-  * Cancelled
-
-#### Admin Features
-
-##### Product Management
-
-* Create products
-* Edit products
-* Delete products
-
-##### Order Management
-
-* View order list
-* View uploaded customer images
-* Update order status
-
-#### Payment
-
-* Cash on Delivery (COD) or a mock payment API
-* No real payment gateway integration
-
-### 2. Created Core System Diagrams
-
-* Use Case Diagram
-* Activity Diagrams:
-
-  * Order Placement Flow
-  * Order Tracking Flow
-* Sequence Diagram:
-
-  * Order Placement Flow
-
-> [Diagram Link](https://drive.google.com/file/d/1o_GBOS3tu2yS1wSgaQdFyCRMW6Mw7B0P/view?usp=sharing)
+> **🎯 Daily Outcome:** Clear ideas and well-defined content structure, completely ready for the coding phase.

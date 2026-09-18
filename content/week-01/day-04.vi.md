@@ -1,40 +1,24 @@
 +++
-title = "Ngày 04 - 19/06/2026"
+title = "Ngày 04 - 18/09/2026"
 weight = 4
 +++
 
-## Việc đã làm
+## Báo Cáo Công Việc Ngày 4: Xây dựng Project Portfolio Cá Nhân
 
-### 1. Bổ sung, chỉnh sửa các diagram cho project_2 PEEP2026
+### 1. Khởi tạo & Cấu trúc dự án
+*(Chi tiết về việc tạo folder dự án mới hoặc tích hợp vào hệ thống hiện tại, cài đặt thư viện cần thiết...)*
 
-- Use Case Diagram: Bổ sung use case "View Internal Statistics" cho actor Admin 
+### 2. Triển khai các khối nội dung chính (UI/UX)
+Dựa trên wireframe và ý tưởng từ Ngày 3, tiến hành code các phần:
+- **Hero Section:** Lời chào, giới thiệu ngắn gọn và hình ảnh cá nhân.
+- **Kỹ năng (Skills):** Hiển thị các công nghệ đang học/thành thạo.
+- **Dự án (Projects):** Trưng bày các dự án đã thực hiện (bao gồm cả dự án Landing Page Task 1).
+- **Liên hệ (Contact) & Link PEEP:** Cung cấp thông tin liên hệ và đường dẫn báo cáo tiến độ.
 
-- Class Diagram: vẽ class diagram cho
-  - Web Admin
-	- Mobile Application
+### 3. Hiệu ứng & Tối ưu hóa (Animation & Responsive)
+- Áp dụng Framer Motion/TailwindCSS để tạo các hiệu ứng chuyển động mượt mà.
+- Đảm bảo giao diện hiển thị hoàn hảo trên mọi thiết bị (Desktop, Tablet, Mobile).
 
-- Vẽ State Machine Diagram cho:
-	- OrderStatus
-	- PaymentStatus
-
-### 2. Tìm hiểu các SKILLS đã được tích hợp trong dự án
-
-#### Mục tiêu
-
-Nắm được repo này đã chuẩn hoá những workflow gì, nằm ở đâu, và khi nào nên dùng.
-
-#### Đã tìm hiểu được
-
-Project này có 2 folder chứa skill là: .agents/skills và .claude/skills. Cả 2 đều chứa cùng một nhóm skill chính, nên có thể hiểu là project đang duy trì bộ hướng dẫn cho nhiều agent/context khác nhau.
-
-Các skill được chia theo từng các loại task như sau:
-
-1. `add-backend-endpoint`: được dùng khi cần thêm, mở rộng API backend theo chuẩn NextJS của repo. Bao gồm module, controller, service, DTO, constants, auth và test.
-2. `add-env-var`: dùng khi cần thêm biến môi trường cho backend, đảm bảo có validate lúc app boot, có cập nhật .env.example
-3. `add-mobile-screen`: dùng khi thêm màn hình ở mobile hoặc thêm API call ở Expo, bám theo convention có sẵn của navigation, theme, i18n và TanStack Query
-4. `prisma-migration`: dùng khi sửa schema Prisma hoặc thay đổi database. Skill này nhấn mạnh việc tạo migration incremental, không sửa migration cũ đã commit
-5. `production-readiness`: dùng để rà checklist trước khi deploy như là env thật, migration, push notification, bảo mật, CI và verify gate
-6. `troubleshoot`: dùng khi gặp lỗi môi trường, lỗi command, lỗi commit hook, lỗi TypeScript, lỗi Auth/IAP hoặc lỗi FCM
-7. `write-tests`: dùng khi cần thêm test cho backend hoặc mobile
-
-**Tổng kết**: bộ skill nnay đầy đủ các nhóm việc quan trọng, từ backend, mobile, database migration, env config, test, troubleshoot và readiness trước production.
+### 4. Triển khai (Deployment)
+- Đẩy source code của Portfolio lên GitHub.
+- Deploy thành công dự án thứ hai này lên hệ thống Vercel để gửi Mentor chấm điểm.
