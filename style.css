@@ -53,24 +53,31 @@ body {
 
 /* === NAVBAR === */
 .navbar {
-    background-color: var(--bg-nav);
+    background-color: rgba(34, 34, 34, 0.95);
+    backdrop-filter: blur(10px);
     width: 90%;
-    max-width: 900px;
-    margin: 30px auto 0;
+    max-width: 950px;
+    margin: 25px auto 0;
     padding: 12px 25px;
     border-radius: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     position: relative;
-    z-index: 10;
+    z-index: 100;
+}
+
+[data-theme="dark"] .navbar {
+    background-color: rgba(26, 26, 28, 0.95);
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
 .logo {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #FFF;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 1px;
 }
 
 .nav-links {
@@ -80,22 +87,20 @@ body {
 }
 
 .nav-links a {
-    color: #AAAAAA;
+    color: #ccc;
     text-decoration: none;
-    font-weight: 400;
-    font-size: 0.95rem;
-    position: relative;
-    padding: 5px 0;
+    font-weight: 600;
+    font-size: 1rem;
     transition: color 0.3s ease;
+    position: relative;
 }
 
-/* Thanh gạch dưới ẩn đi */
 .nav-links a::after {
     content: '';
     position: absolute;
     width: 100%;
-    height: 2px;
-    bottom: 0;
+    height: 3px;
+    bottom: -6px;
     left: 0;
     background-color: #00C6FF;
     transform: scaleX(0);
@@ -122,6 +127,7 @@ body {
     font-weight: 600;
     font-size: 0.95rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    white-space: nowrap;
 }
 
 .nav-btn:hover {
@@ -133,11 +139,12 @@ body {
 .mega-typo {
     width: 100%;
     max-width: 900px;
-    margin: 60px auto 40px;
+    margin: 50px auto 40px;
     position: relative;
     text-align: center;
     font-family: 'Outfit', sans-serif;
     z-index: 10;
+    padding: 0 15px; /* Ngăn chữ dính sát biên gây mất nét */
 }
 
 .mega-top {
@@ -145,9 +152,9 @@ body {
     justify-content: space-between;
     align-items: flex-end;
     font-weight: 800;
-    font-size: 1.2rem;
+    font-size: clamp(0.9rem, 2vw, 1.2rem); /* co giãn theo màn hình */
     letter-spacing: 1px;
-    margin-bottom: -15px;
+    margin-bottom: -10px;
     padding: 0 10px;
     position: relative;
     z-index: 2;
@@ -156,7 +163,7 @@ body {
 
 .mega-year {
     position: relative;
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
 }
 
 .deco-sparkle {
@@ -169,8 +176,8 @@ body {
 
 .mega-center {
     font-family: 'Anton', sans-serif;
-    font-size: 14rem;
-    line-height: 1;
+    font-size: clamp(5rem, 15vw, 13rem); /* Tránh mất nét trên màn nhỏ */
+    line-height: 1.1; /* Tăng line-height chút để không lẹm viền SVG */
     color: #E63946;
     margin: 0;
     position: relative;
