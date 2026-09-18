@@ -1,11 +1,15 @@
-/* Variables cho Theme màu (Dễ nhìn, không quá sáng, không quá tối) */
 :root {
-    --bg-main: #1E1E24;
-    --bg-nav: #2A2A32;
-    --text-main: #FFFFFF;
-    --text-muted: #A0A0AB;
+    /* Theme màu sáng như yêu cầu */
+    --bg-main: #FFFFFF;
+    --bg-nav: #222222;
+    --text-main: #111111;
+    --text-muted: #666666;
+    /* Gradient xịn xò cho text và nút */
     --gradient-accent: linear-gradient(135deg, #00C6FF 0%, #0072FF 100%);
-    --gradient-btn: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+    --gradient-btn: linear-gradient(135deg, #0072FF 0%, #D400FF 100%);
+    
+    /* Màu chữ phát sáng */
+    --text-shine: linear-gradient(270deg, #111, #888, #111);
 }
 
 * {
@@ -15,14 +19,36 @@
 }
 
 body {
-    font-family: 'Outfit', sans-serif; /* Font bo tròn, mềm mại */
+    font-family: 'Outfit', sans-serif;
     background-color: var(--bg-main);
     color: var(--text-main);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     overflow-x: hidden;
+    position: relative;
+}
+
+/* === HIỆU ỨNG TƯƠNG TÁC BACKGROUND (Vệt sáng theo chuột) === */
+.blob-glow {
+    background: linear-gradient(to right, #00f2fe, #4facfe, #d400ff);
+    height: 400px;
+    width: 400px;
+    position: fixed; 
+    border-radius: 50%;
+    filter: blur(100px); /* Làm mờ nhòe tạo hiệu ứng ánh sáng */
+    z-index: -2;
+    opacity: 0.15; /* Sáng nhẹ nhàng không chói */
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+}
+
+.blur-overlay {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(50px);
+    z-index: -1;
+    pointer-events: none;
 }
 
 /* === NAVBAR === */
@@ -30,25 +56,21 @@ body {
     background-color: var(--bg-nav);
     width: 90%;
     max-width: 900px;
-    margin-top: 30px;
+    margin: 30px auto 0;
     padding: 12px 25px;
-    border-radius: 50px; /* Hiệu ứng viên thuốc giống ảnh */
+    border-radius: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    animation: dropDown 0.8s ease-out forwards;
-}
-
-@keyframes dropDown {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10;
 }
 
 .logo {
     font-weight: 700;
     font-size: 1.2rem;
-    letter-spacing: 0.5px;
+    color: #FFF;
 }
 
 .nav-links {
@@ -58,7 +80,7 @@ body {
 }
 
 .nav-links a {
-    color: var(--text-muted);
+    color: #AAAAAA;
     text-decoration: none;
     font-weight: 400;
     font-size: 0.95rem;
@@ -66,7 +88,7 @@ body {
 }
 
 .nav-links a:hover {
-    color: var(--text-main);
+    color: #FFFFFF;
 }
 
 .nav-btn {
@@ -82,7 +104,7 @@ body {
 
 .nav-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+    box-shadow: 0 5px 15px rgba(212, 0, 255, 0.4);
 }
 
 /* === HERO SECTION === */
@@ -94,46 +116,30 @@ body {
     gap: 80px;
     width: 100%;
     max-width: 1000px;
-    margin-top: 100px;
+    margin: 80px auto;
     padding: 0 20px;
-}
-
-/* Left: Ảnh đại diện */
-.hero-left {
-    animation: floatInLeft 1s ease-out forwards;
-}
-
-@keyframes floatInLeft {
-    from { transform: translateX(-50px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
+    position: relative;
+    z-index: 10;
 }
 
 .profile-pic {
     width: 380px;
     height: 380px;
-    border-radius: 50%; /* Tròn xoe */
+    border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
     transition: transform 0.4s ease;
-    border: 5px solid rgba(255, 255, 255, 0.05);
 }
 
 .profile-pic:hover {
-    transform: translateY(-10px) scale(1.02); /* Hiệu ứng nảy nhẹ khi di chuột */
+    transform: translateY(-10px) scale(1.02);
 }
 
-/* Right: Thông tin */
 .hero-right {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Căn giữa theo mẫu */
+    align-items: center;
     text-align: center;
-    animation: floatInRight 1s ease-out forwards;
-}
-
-@keyframes floatInRight {
-    from { transform: translateX(50px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
 }
 
 .greeting {
@@ -143,19 +149,32 @@ body {
     margin-bottom: 5px;
 }
 
+/* HIỆU ỨNG CHỮ CHO TÊN */
 .name {
     font-size: 3.5rem;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 5px;
     letter-spacing: -1px;
+    
+    /* Animation chữ bóng lướt qua (Shine Effect) */
+    background: var(--text-shine);
+    background-size: 200% auto;
+    color: #000;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shineText 3s linear infinite;
+}
+
+@keyframes shineText {
+    to { background-position: 200% center; }
 }
 
 .role {
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 30px;
-    /* Hiệu ứng chữ màu gradient cho Backend Developer */
-    background: var(--gradient-accent);
+    background: var(--gradient-btn);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -170,20 +189,19 @@ body {
 .btn-outline {
     background: transparent;
     color: var(--text-main);
-    border: 2px solid var(--text-muted);
+    border: 1.5px solid var(--text-main);
     padding: 12px 30px;
-    border-radius: 30px; /* Nút bo tròn hoàn toàn */
+    border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
 }
 
 .btn-outline:hover {
-    border-color: var(--text-main);
-    background-color: var(--text-main);
-    color: var(--bg-main);
+    background: var(--text-main);
+    color: #fff;
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 /* Social Icons */
@@ -199,32 +217,105 @@ body {
 }
 
 .social-icons a:hover {
-    color: #00C6FF; /* Màu hover xanh sáng */
-    transform: translateY(-5px) scale(1.1); /* Nhảy nhẹ lên */
+    color: #0072FF;
+    transform: translateY(-5px) scale(1.1);
 }
 
-/* Responsive cơ bản cho màn hình nhỏ */
-@media (max-width: 768px) {
+/* === TECH STACK SECTION (Theo mẫu ảnh mới) === */
+.tech-section {
+    max-width: 1100px;
+    margin: 100px auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.tech-container {
+    display: flex;
+    gap: 40px;
+    align-items: stretch;
+}
+
+/* Layout 4 ô lưới bên trái */
+.tech-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.tech-card {
+    background: rgba(255, 255, 255, 0.6); 
+    backdrop-filter: blur(10px);
+    border: 1.5px solid #222; /* Viền đen mỏng bo cong như ảnh */
+    border-radius: 30px; /* Góc bo tròn lớn */
+    padding: 30px 25px;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s;
+}
+
+.tech-card:hover {
+    transform: translateY(-5px);
+    border-color: #0072FF;
+    box-shadow: 0 15px 30px rgba(0, 114, 255, 0.1);
+}
+
+.tech-card .icon {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Chữ Gradient cho Title của Card */
+.tech-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    background: var(--gradient-btn);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 5px;
+}
+
+.tech-card h4 {
+    font-size: 0.9rem;
+    color: #111;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.tech-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* Hình ảnh bự bên phải */
+.tech-image {
+    flex: 0.6;
+}
+
+.tech-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    object-fit: cover;
+    border-radius: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Responsive cho màn hình điện thoại */
+@media (max-width: 900px) {
+    .tech-container {
+        flex-direction: column;
+    }
     .hero {
         flex-direction: column;
-        gap: 40px;
-        margin-top: 50px;
-    }
-    
-    .profile-pic {
-        width: 250px;
-        height: 250px;
-    }
-
-    .name {
-        font-size: 2.5rem;
-    }
-
-    .role {
-        font-size: 1.5rem;
-    }
-
-    .nav-links {
-        display: none; /* Tạm ẩn menu trên mobile */
+        text-align: center;
     }
 }

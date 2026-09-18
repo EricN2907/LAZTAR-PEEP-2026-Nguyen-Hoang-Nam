@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hoang Nam - Backend Developer</title>
+    <title>EricN - Backend Developer</title>
     <link rel="stylesheet" href="style.css">
     <!-- Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
+    <!-- Hiệu ứng vệt sáng di chuyển theo chuột (Interactive Background) -->
+    <div class="blob-glow" id="blob"></div>
+    <div class="blur-overlay"></div>
+
     <!-- Floating Navbar -->
     <nav class="navbar">
-        <div class="logo">Hoang Nam</div>
+        <div class="logo">EricN</div>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
+            <li><a href="#tech-stack">Tech Stack</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -37,19 +41,70 @@
             <h2 class="role">Backend Developer</h2>
             
             <div class="action-buttons">
-                <!-- Chờ gắn link CV sau -->
+                <!-- Chờ gắn link CV thật -->
                 <a href="#" class="btn btn-outline">Download CV</a>
                 <a href="#contact" class="btn btn-outline">Contact</a>
             </div>
             
             <div class="social-icons">
                 <a href="https://github.com/EricN2907" target="_blank"><i class="fa-brands fa-github"></i></a>
-                <!-- Chờ gắn link Facebook, Mail sau -->
-                <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://www.facebook.com/Nemsadboiz2907" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                <a href="mailto:nemnguyenhoang2907@gmail.com"><i class="fa-solid fa-envelope"></i></a>
             </div>
         </div>
     </section>
 
+    <!-- Phần Tech Stack thay cho Experience (dựa theo ảnh thiết kế) -->
+    <section id="tech-stack" class="tech-section">
+        <h2 class="section-title">Tech Stack</h2>
+        <div class="tech-container">
+            
+            <!-- Left: Grid 4 ô (Các công nghệ Backend lấy từ GitHub của bạn) -->
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <i class="fa-solid fa-code icon"></i>
+                    <h3>C# / .NET</h3>
+                    <h4>Core Backend</h4>
+                    <p>Xây dựng hệ thống vững chắc, hiệu suất cao với kiến trúc Clean Architecture & EF Core.</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fa-brands fa-node-js icon"></i>
+                    <h3>Node.js / TS</h3>
+                    <h4>API Services</h4>
+                    <p>Phát triển APIs linh hoạt, tích hợp Serverless architecture trên môi trường Node.js.</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fa-brands fa-aws icon"></i>
+                    <h3>AWS Cloud</h3>
+                    <h4>Infrastructure</h4>
+                    <p>Hiểu biết và triển khai các dịch vụ Cloud, tối ưu hóa hệ thống phân tán.</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fa-solid fa-database icon"></i>
+                    <h3>Databases</h3>
+                    <h4>SQL & NoSQL</h4>
+                    <p>Thiết kế và tối ưu hóa truy xuất dữ liệu cho hệ thống quy mô vừa và lớn.</p>
+                </div>
+            </div>
+
+            <!-- Right: Ảnh to bo góc -->
+            <div class="tech-image">
+                <img src="https://avatars.githubusercontent.com/u/136496226?v=4" alt="Tech Setup">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Script xử lý bóng mờ đi theo con trỏ chuột -->
+    <script>
+        const blob = document.getElementById("blob");
+        document.body.onpointermove = event => {
+            const { clientX, clientY } = event;
+            blob.animate({
+                left: `${clientX}px`,
+                top: `${clientY}px`
+            }, { duration: 3000, fill: "forwards" });
+        }
+    </script>
 </body>
 </html>
