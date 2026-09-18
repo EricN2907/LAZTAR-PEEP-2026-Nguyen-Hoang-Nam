@@ -193,12 +193,21 @@
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <h2 class="section-title">Contact Me</h2>
-        <div class="contact-container">
-            <a href="mailto:nemnguyenhoang2907@gmail.com" class="email-box">
-                <i class="fa-solid fa-envelope"></i>
-                <span>Send me an email</span>
-            </a>
-            <a href="https://github.com/EricN2907" target="_blank" class="submit-btn">Follow my Github</a>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 40px; margin-top: -20px;">Để lại lời nhắn và mình sẽ phản hồi sớm nhất có thể!</p>
+        
+        <div class="contact-form-container">
+            <form class="contact-form" action="mailto:nemnguyenhoang2907@gmail.com" method="POST" enctype="text/plain">
+                <div class="input-group">
+                    <input type="text" name="Name" placeholder="Tên của bạn" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" name="Email" placeholder="Email của bạn" required>
+                </div>
+                <div class="input-group">
+                    <textarea name="Message" rows="5" placeholder="Lời nhắn của bạn..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn form-submit-btn">Gửi Lời Nhắn <i class="fa-solid fa-paper-plane"></i></button>
+            </form>
         </div>
     </section>
 
