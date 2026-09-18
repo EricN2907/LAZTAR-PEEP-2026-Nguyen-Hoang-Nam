@@ -63,11 +63,11 @@ export default function Home() {
 
   // Tọa độ 5 đỉnh của chữ W
   const awNodes = [
-    { id: 1, title: "Alone", x: 10, y: 20 },
-    { id: 2, title: "Sing Me To Sleep", x: 30, y: 90 },
+    { id: 1, title: "Alone", x: 10, y: 15 },
+    { id: 2, title: "Sing Me To Sleep", x: 30, y: 85 },
     { id: 3, title: "The Spectre", x: 50, y: 40 },
-    { id: 4, title: "Ignite", x: 70, y: 90 },
-    { id: 5, title: "On My Way", x: 90, y: 20 },
+    { id: 4, title: "Ignite", x: 70, y: 85 },
+    { id: 5, title: "On My Way", x: 90, y: 15 },
   ];
 
   return (
@@ -244,12 +244,30 @@ export default function Home() {
 
           {/* THE "W" INTERACTIVE GRAPHIC */}
           <div className="relative w-full max-w-3xl mx-auto aspect-[2/1] mt-10">
-            {/* SVG W Path */}
-            <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_0_20px_rgba(6,182,212,0.6)] overflow-visible">
+            {/* Background glowing particles */}
+            <motion.div animate={{ y: [0, -20, 0], opacity: [0, 0.5, 0] }} transition={{ duration: 3, repeat: Infinity }} className="absolute top-1/4 left-1/4 w-32 h-32 bg-cyan-500/20 rounded-full blur-2xl pointer-events-none" />
+            <motion.div animate={{ y: [0, 20, 0], opacity: [0, 0.4, 0] }} transition={{ duration: 4, repeat: Infinity, delay: 1 }} className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-fuchsia-500/10 rounded-full blur-2xl pointer-events-none" />
+            
+            {/* SVG W Path perfectly aligned to aspect-[2/1] */}
+            <svg viewBox="0 0 200 100" className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-10">
+              {/* Outer blurred glow */}
               <motion.path 
-                d="M 10 20 L 30 90 L 50 40 L 70 90 L 90 20"
+                d="M 20 15 L 60 85 L 100 40 L 140 85 L 180 15"
                 fill="transparent"
-                stroke="rgba(6, 182, 212, 0.8)"
+                stroke="rgba(6, 182, 212, 0.5)"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                filter="blur(4px)"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                transition={{ duration: 2, ease: "easeInOut" }}
+              />
+              {/* Inner bright core */}
+              <motion.path 
+                d="M 20 15 L 60 85 L 100 40 L 140 85 L 180 15"
+                fill="transparent"
+                stroke="#fff"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -273,8 +291,10 @@ export default function Home() {
                     onMouseEnter={() => playAWSong(node.id)}
                     onMouseLeave={stopAWSong}
                     whileHover={{ scale: 1.5 }}
+                    animate={!isActive ? { boxShadow: ["0 0 10px rgba(6,182,212,0.5)", "0 0 25px rgba(6,182,212,0.9)", "0 0 10px rgba(6,182,212,0.5)"] } : {}}
+                    transition={{ duration: 2, repeat: Infinity }}
                     className={`w-6 h-6 md:w-8 md:h-8 rounded-full cursor-pointer transition-all duration-300 flex items-center justify-center ${
-                      isActive ? "bg-white shadow-[0_0_30px_rgba(255,255,255,1)]" : "bg-cyan-500 shadow-[0_0_15px_rgba(6,182,212,0.8)] border-2 border-white"
+                      isActive ? "bg-white shadow-[0_0_40px_rgba(255,255,255,1)]" : "bg-cyan-500 border-2 border-white"
                     }`}
                   >
                     {isActive && <div className="absolute w-12 h-12 rounded-full border border-white/50 animate-ping" />}
