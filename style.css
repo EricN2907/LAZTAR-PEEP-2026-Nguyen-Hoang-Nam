@@ -129,76 +129,105 @@ body {
     box-shadow: 0 5px 15px rgba(212, 0, 255, 0.4);
 }
 
-/* === HERO SECTION === */
-.hero {
+/* === MEGA TYPOGRAPHY (PORTFOLIO) === */
+.mega-typo {
+    width: 100%;
+    max-width: 900px;
+    margin: 60px auto 40px;
+    position: relative;
+    text-align: center;
+    font-family: 'Outfit', sans-serif;
+    z-index: 10;
+}
+
+.mega-top {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    margin-bottom: -15px;
+    padding: 0 10px;
+    position: relative;
+    z-index: 2;
+    color: var(--text-main);
+}
+
+.mega-year {
+    position: relative;
+    font-size: 1.5rem;
+}
+
+.deco-sparkle {
+    position: absolute;
+    top: -25px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+}
+
+.mega-center {
+    font-family: 'Anton', sans-serif;
+    font-size: 14rem;
+    line-height: 1;
+    color: #E63946;
+    margin: 0;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.deco-arrow {
+    position: absolute;
+    top: -20px;
+    left: 45%;
+    width: 80px;
+    height: 50px;
+}
+
+.deco-underline {
+    position: absolute;
+    bottom: 5px;
+    left: 30%;
+    width: 200px;
+    height: 25px;
+}
+
+.mega-bottom {
+    text-align: right;
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    margin-top: -15px;
+    padding-right: 10px;
+    color: var(--text-main);
+}
+
+/* === HERO PROFILE (Chuyển xuống dưới Typography) === */
+.hero-profile {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 80px;
+    gap: 25px;
     width: 100%;
-    max-width: 1000px;
-    margin: 80px auto;
-    padding: 0 20px;
+    margin: 0 auto 80px;
     position: relative;
     z-index: 10;
 }
 
 .profile-pic {
-    width: 380px;
-    height: 380px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s ease;
 }
 
 .profile-pic:hover {
-    transform: translateY(-10px) scale(1.02);
-}
-
-.hero-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.greeting {
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: var(--text-muted);
-    margin-bottom: 5px;
-}
-
-/* HIỆU ỨNG CHỮ CHO TÊN */
-.name {
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin-bottom: 5px;
-    letter-spacing: -1px;
-    
-    /* Animation chữ bóng lướt qua (Shine Effect) */
-    background: var(--text-shine);
-    background-size: 200% auto;
-    color: #000;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shineText 3s linear infinite;
-}
-
-@keyframes shineText {
-    to { background-position: 200% center; }
-}
-
-.role {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 30px;
-    background: var(--gradient-btn);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    transform: translateY(-5px) scale(1.05);
 }
 
 /* Buttons */
@@ -783,4 +812,32 @@ body {
 
 [data-theme="dark"] .blob-glow {
     opacity: 0.5 !important; /* Dark mode thì giảm độ sáng 1 xíu cho đỡ chói */
+}
+
+/* === RESPONSIVE MEGA TYPO === */
+@media (max-width: 768px) {
+    .mega-center {
+        font-size: 7rem;
+    }
+    .deco-arrow {
+        width: 50px;
+        height: 35px;
+        left: 55%;
+    }
+    .deco-underline {
+        width: 120px;
+        height: 15px;
+    }
+    .mega-top, .mega-bottom {
+        font-size: 0.9rem;
+    }
+    .mega-year {
+        font-size: 1.1rem;
+    }
+    .deco-sparkle {
+        width: 20px;
+        height: 20px;
+        top: -15px;
+        right: -5px;
+    }
 }
