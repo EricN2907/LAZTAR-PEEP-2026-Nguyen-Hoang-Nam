@@ -3,51 +3,47 @@ title = "Day 03 - Sep 17, 2026"
 weight = 3
 +++
 
-## Day 3 Report
+## A. Practical work
 
-### Part 1: Landing Page Setup & Implementation (Task 1)
+### 1. Objective
+- Initialize and configure the first practical project using **Next.js (App Router)** and **Tailwind CSS**.
+- Build a complete "VibeMatch" Landing Page - a platform connecting users through musical preferences.
+- Ideate and plan the UI/UX and content structure for the Personal Portfolio project scheduled for Day 4.
 
-**1. Next.js Project Initialization**
-- **Project Name:** `my-landing-page` (Theme: VibeMatch)
-- **Tech Stack:** Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4.
+### 2. Product definition and UI/UX planning
+- **Product Definition (VibeMatch):** A music "dating/matching" platform. Core features include: discovering vibe-mates across genres (EDM, Lo-fi, Indie), mood-based suggested playlists, and trending track leaderboards.
+- **UI/UX Direction:** 
+  - Dark Mode paired with Neon lights (Cyan/Fuchsia) to create a Cyberpunk and Nightlife/Festival atmosphere.
+  - Implemented Glassmorphism on the Navbar for depth.
+  - Focused heavily on micro-interactions (e.g., scaling album covers, glowing neon shadows, pulsating CTA buttons).
+- **Portfolio Planning (Day 4):** Identified necessary sections (Hero, Skills, Projects, Contact), settled on a personal color palette, and sketched preliminary wireframes before coding.
 
-**2. Folder Structure & Components**
-- Organized `layout.tsx`, `page.tsx`, and separated components (`Navbar`, `Footer`).
-- Centralized mock data in `src/data/mockData.ts`.
+### 3. Landing page implementation
+- **Structure & Routing:** Organized standard App Router directories featuring a global `layout.tsx`, home `page.tsx`, and sub-pages (`/players`, `/features`).
+- **Animation Integration (Framer Motion):** 
+  - Created smooth scroll-triggered transitions (Fade-in, Slide-up).
+  - Built an exclusive "Fandom Spotlight: Alan Walker" interactive section utilizing SVG Path animations to draw a glowing "W".
+- **Audio Handling:** Embedded a continuous Lofi background audio player, and implemented dynamic audio snippets that play only when users hover over the vertices of the "W".
 
-**3. UI & Routing**
-- Modern Cyberpunk Dark Mode aesthetic.
-- Integrated **Lucide React** (icons) and **Framer Motion** (animations).
-- Used Next.js `<Link>` for seamless Client-side Routing.
-
-**4. Deployment**
-- Pushed source code to personal GitHub repository.
-- Successfully deployed to **Vercel**.
+### 4. Verification and issues resolved
+- **Issue 1 (Audio Stream Conflict):** When interacting with the "W", the EDM song would overlap with the Lofi background music, creating a messy audio experience.
+  - *Resolution:* Used `useRef` and `useState` to catch hover events. Force-paused the background Lofi track while hovering over the "W" nodes, allowing only the EDM snippet to play.
+- **Issue 2 (SVG Coordinates on Small Screens):** The glowing interactive nodes misaligned from the peaks of the "W" when the browser window was resized to mobile dimensions.
+  - *Resolution:* Replaced fixed pixel (`px`) positioning with percentage-based (`%`) coordinates mapped directly over the SVG's `viewBox="0 0 100 100"`. This ensured perfect alignment across all responsive breakpoints.
 
 ---
 
-### Part 2: Planning & Ideation for Personal Portfolio (Task 2)
+## B. Summary
 
-Preparation steps taken before diving into the code for the Personal Portfolio (CV) project:
+### What I learned
+- Deepened understanding of Next.js Client-side Navigation via the `<Link>` tag to achieve a seamless Single Page Application (SPA) experience.
+- Mastered the technique of combining **Framer Motion** with the **SVG** coordinate system to build complex, lightweight interactive graphic animations.
+- Improved skills in managing and controlling HTML5 `<audio>` elements securely within React Functional Components.
 
-**1. Content Listing**
-Defined the necessary sections for the personal page:
-- About Me (Hero section)
-- Skills (Tech stack & soft skills)
-- Projects (Portfolio showcase)
-- Contact Information
-- PEEP Report Link
+### Challenges and how I addressed them
+- **Challenge:** Managing the Landing Page source code within the same repository as the Hugo documentation caused file clutter and triggered deployment configuration errors on Vercel.
+- **Resolution:** Extracted the entire Landing Page source code into a brand new, isolated GitHub repository. This allowed Vercel to instantly recognize the Next.js framework and automate the CI/CD pipeline flawlessly without configuration conflicts.
 
-**2. Inspiration & Reference**
-- Researched 2-3 portfolio templates/examples (including mentor suggestions) to gather inspiration on layout and styling.
-
-**3. Wireframing**
-- Created simple wireframes (via Figma, Excalidraw, or paper) to outline content blocks and component placement.
-
-**4. Design System**
-- Selected a core color palette and typography that aligns with personal branding and LAZTAR guidelines.
-
-**5. Tech Stack Selection**
-- Finalized the use of **Next.js** and **Tailwind CSS** (discussed and approved by the mentor based on current capabilities).
-
-> **🎯 Daily Outcome:** Clear ideas and well-defined content structure, completely ready for the coding phase.
+### URL PAGE
+- **Source Code (GitHub):** [https://github.com/EricN2907/my-landing-page](https://github.com/EricN2907/my-landing-page)
+- **Live Site (Vercel):** [https://my-landing-page.vercel.app](https://my-landing-page.vercel.app) *(Update this domain to your actual Vercel deployment link)*
