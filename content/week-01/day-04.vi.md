@@ -1,24 +1,35 @@
 +++
-title = "Ngày 04 - 18/09/2026(On-Site)"
+title = "Ngày 04 - 18/09/2026(On-site)"
 weight = 4
 +++
 
-## Báo Cáo Công Việc Ngày 4: Xây dựng Project Portfolio Cá Nhân
+## Báo Cáo Công Việc Ngày 4: Xây dựng & Deploy Project Portfolio Cá Nhân
 
 ### 1. Khởi tạo & Cấu trúc dự án
-*(Chi tiết về việc tạo folder dự án mới hoặc tích hợp vào hệ thống hiện tại, cài đặt thư viện cần thiết...)*
+- Khởi tạo thư mục dự án sử dụng HTML, CSS, JS thuần.
+- Thiết lập Git local và kết nối với remote repository trên GitHub (`my-landing-page`).
 
 ### 2. Triển khai các khối nội dung chính (UI/UX)
-Dựa trên wireframe và ý tưởng từ Ngày 3, tiến hành code các phần:
-- **Hero Section:** Lời chào, giới thiệu ngắn gọn và hình ảnh cá nhân.
-- **Kỹ năng (Skills):** Hiển thị các công nghệ đang học/thành thạo.
-- **Dự án (Projects):** Trưng bày các dự án đã thực hiện (bao gồm cả dự án Landing Page Task 1).
-- **Liên hệ (Contact) & Link PEEP:** Cung cấp thông tin liên hệ và đường dẫn báo cáo tiến độ.
+Dựa trên ý tưởng và thiết kế từ Ngày 3, tiến hành hoàn thiện toàn bộ giao diện với phong cách Light Theme hiện đại, bo cong góc (Pill-shape):
+- **Navbar & Hero Section:** Thanh điều hướng nổi, lời chào, giới thiệu chức danh Backend Developer và các nút call-to-action (CV, Contact).
+- **Quotes & Bio:** Khu vực hiển thị châm ngôn sống cá nhân, định hướng nghề nghiệp.
+- **Tech Stack:** Grid 4 ô hiển thị các công nghệ Backend đang thành thạo (C# / .NET, Node.js / TS, AWS, Databases) kết hợp hình ảnh minh họa.
+- **Projects:** Trưng bày 6 dự án tiêu biểu (PRM393, Edu-Nexus, PiedTeam, RAG-Financial, Serverless Student Mgmt, DNA-Testing) với thẻ bo tròn hiện đại và nút link trực tiếp đến Github.
+- **Liên hệ (Contact) & Footer:** Nút bấm liên hệ qua email to bản và footer bản quyền.
 
-### 3. Hiệu ứng & Tối ưu hóa (Animation & Responsive)
-- Áp dụng Framer Motion/TailwindCSS để tạo các hiệu ứng chuyển động mượt mà.
-- Đảm bảo giao diện hiển thị hoàn hảo trên mọi thiết bị (Desktop, Tablet, Mobile).
+### 3. Hiệu ứng & Tối ưu hóa (Animation)
+- Tự viết CSS thuần để tạo các hiệu ứng chuyển động mượt mà không cần thư viện:
+  - Hiệu ứng vệt sáng gradient mờ bám theo con trỏ chuột (Interactive Mouse Blob) cực kỳ ảo diệu.
+  - Animation chữ phát sáng (Shine Text) liên tục cho tên cá nhân.
+  - Hiệu ứng trượt gạch chân mượt mà (`transform: scaleX`) cho thanh điều hướng.
+  - Phóng to ảnh (Zoom in) mượt mà khi hover vào thẻ Dự án.
 
 ### 4. Triển khai (Deployment)
-- Đẩy source code của Portfolio lên GitHub.
-- Deploy thành công dự án thứ hai này lên hệ thống Vercel để gửi Mentor chấm điểm.
+- Đẩy source code của Portfolio lên GitHub hoàn tất.
+- Đã cấu hình và Deploy thành công dự án lên hệ thống Vercel để nộp cho Mentor.
+- 🐙 **Link GitHub Repo:** [https://github.com/EricN2907/my-landing-page](https://github.com/EricN2907/my-landing-page)
+- 🚀 **Link Live Demo (Vercel):** [https://my-landing-page-mu-five.vercel.app/](https://my-landing-page-mu-five.vercel.app/)
+
+### 5. Kết luận
+- Dự án Portfolio đã hoàn thiện 100% các tính năng cơ bản hiển thị. 
+- Quá trình deploy tĩnh từ GitHub sang Vercel hoạt động trơn tru. Sẵn sàng demo trực tiếp với Mentor.
