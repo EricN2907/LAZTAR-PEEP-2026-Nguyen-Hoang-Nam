@@ -43,16 +43,16 @@ export const suggestedVibes = [
 ];
 
 export const trendingTracks = [
-  { id: 1, title: "Faded", artist: "Alan Walker", genre: "EDM", duration: "3:32", cover: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=100&q=80" },
-  { id: 2, title: "Waiting For Love", artist: "Avicii", genre: "EDM", duration: "3:50", cover: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=100&q=80" },
-  { id: 3, title: "Bước Qua Nhau", artist: "Vũ.", genre: "Indie", duration: "4:15", cover: "https://images.unsplash.com/photo-1493225457124-a1a2a5f5f9af?w=100&q=80" },
-  { id: 4, title: "Closer", artist: "The Chainsmokers", genre: "Pop", duration: "4:04", cover: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=100&q=80" },
-  { id: 5, title: "Animals", artist: "Martin Garrix", genre: "EDM", duration: "5:04", cover: "https://images.unsplash.com/photo-1571266028243-cb40fce7573a?w=100&q=80" },
-  { id: 6, title: "Lofi Study", artist: "Lofi Girl", genre: "Lo-fi", duration: "2:30", cover: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=100&q=80" },
-  { id: 7, title: "Vùng Ký Ức", artist: "Chillies", genre: "Indie", duration: "4:30", cover: "https://images.unsplash.com/photo-1445116572660-236099ac9590?w=100&q=80" },
-  { id: 8, title: "Starboy", artist: "The Weeknd", genre: "R&B", duration: "3:50", cover: "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=100&q=80" },
-  { id: 9, title: "Thôi Miên", artist: "CARA", genre: "Pop", duration: "3:25", cover: "https://images.unsplash.com/photo-1621252179027-94459d278660?w=100&q=80" },
-  { id: 10, title: "Titanium", artist: "David Guetta ft. Sia", genre: "EDM", duration: "4:05", cover: "https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=100&q=80" },
+  { id: 1, title: "Faded", artist: "Alan Walker", genre: "EDM", duration: "3:32", cover: "https://picsum.photos/seed/track1/200/200" },
+  { id: 2, title: "Waiting For Love", artist: "Avicii", genre: "EDM", duration: "3:50", cover: "https://picsum.photos/seed/track2/200/200" },
+  { id: 3, title: "Bước Qua Nhau", artist: "Vũ.", genre: "Indie", duration: "4:15", cover: "https://picsum.photos/seed/track3/200/200" },
+  { id: 4, title: "Closer", artist: "The Chainsmokers", genre: "Pop", duration: "4:04", cover: "https://picsum.photos/seed/track4/200/200" },
+  { id: 5, title: "Animals", artist: "Martin Garrix", genre: "EDM", duration: "5:04", cover: "https://picsum.photos/seed/track5/200/200" },
+  { id: 6, title: "Lofi Study", artist: "Lofi Girl", genre: "Lo-fi", duration: "2:30", cover: "https://picsum.photos/seed/track6/200/200" },
+  { id: 7, title: "Vùng Ký Ức", artist: "Chillies", genre: "Indie", duration: "4:30", cover: "https://picsum.photos/seed/track7/200/200" },
+  { id: 8, title: "Starboy", artist: "The Weeknd", genre: "R&B", duration: "3:50", cover: "https://picsum.photos/seed/track8/200/200" },
+  { id: 9, title: "Thôi Miên", artist: "CARA", genre: "Pop", duration: "3:25", cover: "https://picsum.photos/seed/track9/200/200" },
+  { id: 10, title: "Titanium", artist: "David Guetta ft. Sia", genre: "EDM", duration: "4:05", cover: "https://picsum.photos/seed/track10/200/200" },
 ];
 
 export const topVibers = [
