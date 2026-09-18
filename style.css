@@ -243,6 +243,59 @@ body {
     transform: translateY(-5px) scale(1.1);
 }
 
+/* === QUOTES & BIO SECTION === */
+.quotes-section {
+    max-width: 900px;
+    margin: 0 auto 100px;
+    padding: 0 20px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.quotes-container {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1.5px solid #222;
+    border-radius: 40px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.quotes-container:hover {
+    transform: translateY(-5px);
+}
+
+.quote-icon {
+    font-size: 2rem;
+    color: #0072FF;
+    margin-bottom: 20px;
+}
+
+.bio-text {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.small-quotes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.95rem;
+    color: #666;
+    flex-wrap: wrap;
+    font-weight: 500;
+}
+
+.small-quotes .dot {
+    color: #ccc;
+}
+
 /* === TECH STACK SECTION (Theo mẫu ảnh mới) === */
 .tech-section {
     max-width: 1100px;
