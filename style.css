@@ -33,9 +33,9 @@ body {
     width: 400px;
     position: fixed; 
     border-radius: 50%;
-    filter: blur(100px); /* Làm mờ nhòe tạo hiệu ứng ánh sáng */
+    filter: blur(80px); /* Giảm blur để vệt sáng nét và đậm hơn */
     z-index: -2;
-    opacity: 0.15; /* Sáng nhẹ nhàng không chói */
+    opacity: 0.45; /* Tăng độ đậm lên nhiều để dễ thấy trên nền trắng */
     pointer-events: none;
     transform: translate(-50%, -50%);
 }
@@ -84,11 +84,31 @@ body {
     text-decoration: none;
     font-weight: 400;
     font-size: 0.95rem;
+    position: relative;
+    padding: 5px 0;
     transition: color 0.3s ease;
+}
+
+/* Thanh gạch dưới ẩn đi */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #00C6FF;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
 }
 
 .nav-links a:hover {
     color: #FFFFFF;
+}
+
+/* Hiển thị gạch dưới khi rê chuột */
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 .nav-btn {
