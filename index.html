@@ -25,7 +25,10 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="https://github.com/EricN2907" target="_blank" class="nav-btn">Visit Github</a>
+        <div class="nav-actions">
+            <button id="theme-toggle" class="theme-toggle-btn"><i class="fa-solid fa-moon"></i></button>
+            <a href="https://github.com/EricN2907" target="_blank" class="nav-btn">Visit Github</a>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -45,7 +48,7 @@
                 <a href="#contact" class="btn btn-outline">Contact</a>
             </div>
             
-            <div class="social-icons">
+            <div class="social-icons" style="margin-top: 20px;">
                 <a href="https://github.com/EricN2907" target="_blank"><i class="fa-brands fa-github"></i></a>
                 <a href="https://www.facebook.com/Nemsadboiz2907" target="_blank"><i class="fa-brands fa-facebook"></i></a>
                 <a href="mailto:nemnguyenhoang2907@gmail.com"><i class="fa-solid fa-envelope"></i></a>
@@ -210,8 +213,31 @@
         <p class="copyright">&copy; All Rights Reserved | EricN</p>
     </footer>
 
-    <!-- Script xử lý bóng mờ đi theo con trỏ chuột -->
+    <!-- Script xử lý bóng mờ đi theo con trỏ chuột và Theme -->
     <script>
+        // --- Xử lý Dark Mode ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        if (currentTheme === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            if (document.body.getAttribute('data-theme') === 'dark') {
+                document.body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+
+        // --- Xử lý hiệu ứng Blob ---
         const blob = document.getElementById("blob");
         document.body.onpointermove = event => {
             const { clientX, clientY } = event;

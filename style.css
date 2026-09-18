@@ -609,3 +609,99 @@ footer {
         flex-wrap: wrap;
     }
 }
+
+/* === THEME TOGGLE & NAV ACTIONS === */
+.nav-actions {
+    display: flex;
+    align-items: center;
+}
+
+.theme-toggle-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+    color: #0072FF;
+}
+
+/* === DARK MODE OVERRIDES === */
+[data-theme="dark"] {
+    --bg-main: #0f0f11;
+    --text-main: #ffffff;
+    --text-muted: #aaaaaa;
+    --bg-nav: #1a1a1c;
+}
+
+[data-theme="dark"] body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .navbar {
+    background-color: var(--bg-nav);
+}
+
+[data-theme="dark"] .tech-card,
+[data-theme="dark"] .project-card-new,
+[data-theme="dark"] .quotes-container {
+    background: rgba(30, 30, 35, 0.7);
+    border-color: #333;
+    color: #fff;
+}
+
+[data-theme="dark"] .tech-card h3,
+[data-theme="dark"] .project-card-new h3,
+[data-theme="dark"] .bio-text {
+    color: #fff;
+}
+
+[data-theme="dark"] .btn-outline,
+[data-theme="dark"] .btn-outline-small,
+[data-theme="dark"] .submit-btn {
+    border-color: #555;
+    color: #fff;
+}
+
+[data-theme="dark"] .btn-outline:hover,
+[data-theme="dark"] .btn-outline-small:hover,
+[data-theme="dark"] .submit-btn:hover {
+    background: #fff;
+    color: #111;
+}
+
+[data-theme="dark"] .email-box {
+    background: #1a1a1c;
+    border-color: #333;
+    color: #fff;
+}
+
+[data-theme="dark"] .footer-links a,
+[data-theme="dark"] .greeting,
+[data-theme="dark"] .name,
+[data-theme="dark"] .nav-links a {
+    color: #fff;
+}
+
+[data-theme="dark"] .nav-links a {
+    color: #ccc;
+}
+
+[data-theme="dark"] .nav-links a:hover {
+    color: #fff;
+}
+
+/* === CẢI THIỆN HIỆU ỨNG CHUỘT (BLOB) === */
+.blob-glow {
+    opacity: 0.7 !important; /* Làm hiệu ứng rõ và đậm hơn */
+    filter: blur(60px) !important; /* Giảm độ nhòe để nhìn sắc nét hơn một chút */
+}
+
+[data-theme="dark"] .blob-glow {
+    opacity: 0.5 !important; /* Dark mode thì giảm độ sáng 1 xíu cho đỡ chói */
+}
