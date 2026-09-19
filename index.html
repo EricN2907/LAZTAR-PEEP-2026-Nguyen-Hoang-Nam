@@ -27,7 +27,8 @@
         </ul>
         <div class="nav-actions">
             <button id="theme-toggle" class="theme-toggle-btn"><i class="fa-solid fa-moon"></i></button>
-            <a href="https://github.com/EricN2907" target="_blank" class="nav-btn">Visit Github</a>
+            <a href="https://github.com/EricN2907" target="_blank" class="nav-btn">Github</a>
+            <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
         </div>
     </nav>
 
@@ -295,6 +296,25 @@
                 localStorage.setItem('theme', 'dark');
                 themeIcon.classList.replace('fa-moon', 'fa-sun');
             }
+        });
+
+        // --- Xử lý Menu Mobile ---
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-xmark');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+        });
+
+        // Đóng menu khi click vào một link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.querySelector('i').classList.add('fa-bars');
+                hamburger.querySelector('i').classList.remove('fa-xmark');
+            });
         });
 
         // --- Xử lý hiệu ứng Blob ---

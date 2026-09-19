@@ -135,6 +135,21 @@ body {
     box-shadow: 0 5px 15px rgba(212, 0, 255, 0.4);
 }
 
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 15px;
+    transition: color 0.3s ease;
+}
+
+.hamburger:hover {
+    color: #00C6FF;
+}
+
 /* === MEGA TYPOGRAPHY (PORTFOLIO) === */
 .mega-typo {
     width: 100%;
@@ -841,22 +856,59 @@ body {
     opacity: 0.5 !important; /* Dark mode thì giảm độ sáng 1 xíu cho đỡ chói */
 }
 
-/* === RESPONSIVE MEGA TYPO & QUOTES === */
+/* === RESPONSIVE MEGA TYPO, QUOTES & NAVBAR === */
 @media (max-width: 768px) {
+    /* Navbar Hamburger Menu */
+    .hamburger {
+        display: block;
+    }
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(34, 34, 34, 0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 0;
+        border-radius: 20px;
+        margin-top: 10px;
+        display: none; /* Hide by default */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    [data-theme="dark"] .nav-links {
+        background-color: rgba(26, 26, 28, 0.95);
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-btn {
+        padding: 8px 16px; /* Nút nhỏ gọn lại cho mobile */
+        font-size: 0.85rem;
+    }
+    
+    /* Mega Typography fix cho không tràn ngang */
+    .mega-typo {
+        padding: 0 10px;
+    }
     .mega-center {
-        font-size: 7rem;
+        font-size: 17vw; /* Ép chữ khít 100% màn hình, không bao giờ mất nét */
     }
     .deco-arrow {
-        width: 50px;
-        height: 35px;
-        left: 55%;
+        width: 40px;
+        height: 25px;
+        left: 60%;
+        top: -10px;
     }
     .deco-underline {
-        width: 120px;
-        height: 15px;
+        width: 100px;
+        height: 12px;
+        left: 25%;
     }
     .mega-top, .mega-bottom {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
     .mega-year {
         font-size: 1.1rem;
@@ -867,6 +919,19 @@ body {
         top: -15px;
         right: -5px;
     }
+
+    /* Hero Buttons */
+    .action-buttons {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 20px;
+    }
+    .btn-outline {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Quotes Grid */
     .quotes-grid {
         grid-template-columns: 1fr;
     }
@@ -875,5 +940,14 @@ body {
     }
     .primary-quote .bio-text {
         font-size: 1.2rem;
+    }
+    
+    /* Footer & Contact */
+    .footer-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .contact-form {
+        padding: 0 15px;
     }
 }
