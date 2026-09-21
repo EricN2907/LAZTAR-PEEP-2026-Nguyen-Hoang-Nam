@@ -30,5 +30,3 @@ Dựa trên ý tưởng và thiết kế từ Ngày 3, tiến hành hoàn thiệ
 - 🔗 **Link GitHub Repo:** [https://github.com/EricN2907/my-portfolio](https://github.com/EricN2907/my-portfolio)
 - 🚀 **Link Live Demo (Vercel):** [https://my-portfolio-xi-seven-qns5y8o6gu.vercel.app/](https://my-portfolio-xi-seven-qns5y8o6gu.vercel.app/)
 
-### 5. Kết luận
-- Quá trình deploy tĩnh từ GitHub sang Vercel hoạt động trơn tru. Sẵn sàng demo trực tiếp với Mentor.

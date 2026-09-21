@@ -29,7 +29,3 @@ Based on the ideas and designs from Day 3, I completed the entire UI with a mode
 - Configured and successfully deployed the project to Vercel to submit to the Mentor.
 - 🔗 **GitHub Repo Link:** [https://github.com/EricN2907/my-portfolio](https://github.com/EricN2907/my-portfolio)
 - 🚀 **Live Demo Link (Vercel):** [https://my-portfolio-xi-seven-qns5y8o6gu.vercel.app/](https://my-portfolio-xi-seven-qns5y8o6gu.vercel.app/)
-
-### 5. Conclusion
-
-- The static deployment process from GitHub to Vercel operates smoothly. Ready for a live demo with the Mentor.
