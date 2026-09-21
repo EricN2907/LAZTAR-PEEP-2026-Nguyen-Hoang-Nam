@@ -46,4 +46,4 @@ weight = 3
 
 ### URL PAGE
 - **Source Code (GitHub):** [https://github.com/EricN2907/my-landing-page](https://github.com/EricN2907/my-landing-page)
-- **Live Site (Vercel):** [https://my-landing-page.vercel.app](https://my-landing-page.vercel.app) *(Update this domain to your actual Vercel deployment link)*
+- **Live Site (Vercel):** [https://my-landing-page.vercel.app](https://my-landing-page.vercel.app) 
