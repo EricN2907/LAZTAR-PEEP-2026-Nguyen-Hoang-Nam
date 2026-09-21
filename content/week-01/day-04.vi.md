@@ -27,9 +27,8 @@ Dựa trên ý tưởng và thiết kế từ Ngày 3, tiến hành hoàn thiệ
 ### 4. Triển khai (Deployment)
 - Đẩy source code của Portfolio lên GitHub hoàn tất.
 - Đã cấu hình và Deploy thành công dự án lên hệ thống Vercel để nộp cho Mentor.
-- 🐙 **Link GitHub Repo:** [https://github.com/EricN2907/my-landing-page](https://github.com/EricN2907/my-landing-page)
-- 🚀 **Link Live Demo (Vercel):** [https://my-landing-page-mu-five.vercel.app/](https://my-landing-page-mu-five.vercel.app/)
+- 🔗 **Link GitHub Repo:** [https://github.com/EricN2907/my-portfolio](https://github.com/EricN2907/my-portfolio)
+- 🚀 **Link Live Demo (Vercel):** [https://my-portfolio-xi-seven-qns5y8o6gu.vercel.app/](https://my-portfolio-xi-seven-qns5y8o6gu.vercel.app/)
 
 ### 5. Kết luận
-- Dự án Portfolio đã hoàn thiện 100% các tính năng cơ bản hiển thị. 
 - Quá trình deploy tĩnh từ GitHub sang Vercel hoạt động trơn tru. Sẵn sàng demo trực tiếp với Mentor.
