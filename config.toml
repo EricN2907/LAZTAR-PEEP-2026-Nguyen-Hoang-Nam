@@ -5,8 +5,10 @@ publishDir = "public"
 
 theme = "hugo-theme-learn"
 
+disableKinds = ["RSS"]
+
 [outputs]
-home = [ "HTML", "RSS", "JSON" ]
+home = [ "HTML", "JSON" ]
 
 [params]
   themeVariant = "laztar"
