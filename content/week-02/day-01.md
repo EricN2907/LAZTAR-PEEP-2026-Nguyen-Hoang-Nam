@@ -1,82 +1,59 @@
 +++
-title = "Day 01 - 23/06/2026"
+title = "Day 01 - 21/09/2026 (On-site)"
 weight = 1
 +++
 
 ## Completed Tasks
 
-### 1. Setup and Configured Jira Kanban Board for Project Progress Management
+### 1. Revised and Updated the Landing Page
 
-- Established a workflow based on the Epic → Story → Task model.
-- Analyzed Use Case Diagrams to define functional scope and divided it into 7 main feature Epics.
-  - Ensured each Epic is decomposed into specific User Stories and Tasks, making progress easy to track.
-  - Separated Epic E0 (SRS & Documentation) to manage requirement analysis and project documentation activities, preventing overlap with feature development Epics.
+- Reviewed and improved the overall layout, content, and visual design of the existing landing page.
+- Adjusted responsive breakpoints to ensure proper display across desktop and mobile screen sizes.
+- Fixed UI inconsistencies including spacing, typography, and component alignment.
 
-### 2. The Basics of React Native
+### 2. Migrated Personal Portfolio from HTML to Next.js
 
-#### 2.1. Core Components and Native Components
+#### 2.1. Why migrate from plain HTML to Next.js?
 
-[Reference](https://reactnative.dev/docs/intro-react-native-components)
+| Aspect | Plain HTML | Next.js |
+| :--- | :--- | :--- |
+| **Routing** | Manual link management | File-system based routing |
+| **Performance** | Static only | SSG / SSR / ISR supported |
+| **SEO** | Limited meta control | Built-in `<head>` and metadata API |
+| **Maintainability** | Hard to scale | Component-based, reusable |
+| **Deployment** | Any static host | Vercel integration, CI/CD built-in |
 
-##### React Native uses Native Components
+#### 2.2. Migration steps
 
-- React Native does not use HTML like ReactJS.
-- When writing UIs in React Native, components are translated into the platform's native components.
-- React Native acts as an intermediary layer, allowing us to write in JavaScript while still generating a native UI.
+1. **Scaffolded a new Next.js project** using `create-next-app` with TypeScript and Tailwind CSS.
+2. **Converted static HTML sections** (Hero, About, Skills, Projects, Contact) into individual React components under `components/`.
+3. **Set up the App Router** — `app/layout.tsx` for shared layout (Navbar, Footer), `app/page.tsx` as the home entry point.
+4. **Moved static assets** (images, fonts, icons) to the `public/` directory and updated all references.
+5. **Applied Tailwind CSS** utility classes to replace inline styles and legacy CSS rules.
+6. **Configured `next/image`** for optimized image loading with automatic `srcSet` and lazy loading.
 
-##### Core Components
+#### 2.3. Project structure after migration
 
-React Native has a set of basic components called **Core Components**.
+```
+portfolio/
+├── app/
+│   ├── layout.tsx       # Global layout: Navbar, Footer, metadata
+│   ├── page.tsx         # Home page (all sections combined)
+│   └── globals.css      # Global Tailwind base styles
+├── components/
+│   ├── Navbar.tsx
+│   ├── Hero.tsx
+│   ├── About.tsx
+│   ├── Skills.tsx
+│   ├── Projects.tsx
+│   └── Contact.tsx
+└── public/
+    └── images/          # Profile photo, project thumbnails
+```
 
-| React Native UI Component | Android View | iOS View | Web Analog | Description |
-| ------------------------- | ------------ | -------- | ---------- | ----------- |
-| `<View>`                  | `<ViewGroup>` | `<UIView>`| A non-scrolling `<div>` | A container that supports layout with flexbox, style, some touch handling, and accessibility controls |
-| `<Text>`                  | `<TextView>`  | `<UITextView>`| `<p>` | Displays, styles, and nests strings of text and even handles touch events |
-| `<Image>`                 | `<ImageView>` | `<UIImageView>`| `<img>` | Displays different types of images |
-| `<ScrollView>`            | `<ScrollView>`| `<UIScrollView>`| `<div>` | A generic scrolling container that can contain multiple components and views |
-| `<TextInput>`             | `<EditText>`  | `<UITextField>`| `<input type="text">` | Allows the user to enter text |
+## Lessons Learned
 
-More details at [Core Components](https://reactnative.dev/docs/components-and-apis)
-
--> Core Architecture: **React Component → React Native Component → Native Component → Android/iOS UI**
-
-#### 2.2. React Fundamentals
-
-[Reference](https://reactnative.dev/docs/intro-react)
-
-##### React Native is Built on React
-
-- To learn React Native well, you must first understand React.
-- React Native does not replace React; instead, it uses React's core principles to build mobile interfaces.
-
-##### UI is Built from Components
-
-- In React, everything is a component.
-- An application is created by assembling multiple small components together.
-  
--> **Build UI by dividing it into independent, reusable blocks.**
-
-##### Components Receive Data via Props
-
-- Props stands for "Properties".
-- Characteristics:
-  - Read-only
-  - Cannot be modified directly inside the receiving component
-
--> **Props are like function parameters.**
-
-##### Components Can Have State
-
-- State is the component's internal data.
-- Characteristics:
-  - Can be changed via `setState` or `useState`
-  - When state changes → the component automatically re-renders
-- When state changes:
-  - React automatically re-renders the UI
-  - No direct UI manipulation is needed
-
--> **State is the "memory" of a component.**
-
-#### Key takeaway
-
-> React Native = React (Components + Props + State + Hooks) + Native Components (View, Text, Image, ...)  
+- Moving from plain HTML to Next.js requires thinking in **components and props** rather than duplicated markup.
+- `next/image` requires explicit `width` and `height` or a `fill` prop — forgetting this causes build errors.
+- Tailwind CSS class ordering matters for readability; using the **Prettier Tailwind plugin** keeps classes consistent.
+- The App Router's `layout.tsx` is the right place for anything shared across all pages (Navbar, Footer, global fonts).
